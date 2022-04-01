@@ -6,13 +6,5 @@ $b = Get-ADObject -Filter {objectclass -eq 'msFVE-RecoveryInformation'} -SearchB
 $b
 ~~~
 ## 方式二
-将以下代码存为 Get-BitlockerRecoveryPasswordOrKey.ps1。
+下载 Get-BitlockerRecoveryPasswordOrKey.ps1 到 DC 中。
 管理员身份运行 PowerShell ISE，打开 Get-BitlockerRecoveryPasswordOrKey.ps1，更改计算机名，执行。
-~~~
-$a = Get-ADComputer 计算机名
-$b = Get-ADObject -Filter {objectclass -eq 'msFVE-RecoveryInformation'} -SearchBase $a.DistinguishedName -Properties 'msFVE-RecoveryPassword'
-foreach($c in $b) {
-    Write-Host $c
-    Write-Host $c."msFVE-RecoveryPassword"
-}
-~~~
